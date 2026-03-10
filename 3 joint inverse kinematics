@@ -1,0 +1,24 @@
+import math
+
+l1 = 5
+l2 = 10
+x = 0
+y = 10
+z = 5
+
+# alpha is the base rotation (around the vertical axis),
+
+# beta is the shoulder angle (angle between base and the first link),
+
+# gamma is the elbow angle (between link 1 and link 2),
+
+r = math.sqrt(x**2 + y**2 + z**2)
+if r> (l1+l2) or r < (l1-l2):
+    print("unreachable")
+alpha = math.atan(x / z)
+gamma = math.acos((x**2 + y**2 + z**2 -l1**2 - l2**2)/ (2*l1*l2))
+beta = math.atan(y/ math.sqrt(x**2 + z**2)) - math.acos((x**2 + y**2 + z**2 + l1**2 - l2**2)/ (2*l1* r))
+
+print("alpha: ", alpha)
+print("beta: ", beta)
+print("gamma: ", gamma)                 
